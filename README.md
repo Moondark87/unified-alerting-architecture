@@ -28,6 +28,7 @@ A layered pipeline that decouples *where alerts come from* from *how they are de
 ## Architecture
 
 ```mermaid
+%%{init: {"flowchart": {"wrappingWidth": 420, "htmlLabels": true}}}%%
 flowchart TB
     %% Layer 1: Monitoring
     subgraph L1 ["1 · Monitoring & Alerting"]
@@ -69,12 +70,14 @@ flowchart TB
     D -. Acknowledgements .-> E
     E -- Correlated alerts --> B1
 
-    %% Styling: outline-only so titles stay readable in light and dark themes
-    style L1 fill:none,stroke:#6c8ebf,stroke-width:2px
-    style L2 fill:none,stroke:#d79b00,stroke-width:2px
-    style L3 fill:none,stroke:#82b366,stroke-width:2px
-    style L4 fill:none,stroke:#9673a6,stroke-width:2px
-    style L5 fill:none,stroke:#888888,stroke-width:2px
+    %% Styling: explicit colors so the diagram reads the same in light and dark themes
+    classDef box fill:#f6f8fa,stroke:#57606a,color:#1f2328
+    class A,B1,B2,C,D,E box
+    style L1 fill:none,stroke:#4a7fc1,stroke-width:2px,color:#4a7fc1
+    style L2 fill:none,stroke:#c98a00,stroke-width:2px,color:#c98a00
+    style L3 fill:none,stroke:#5a9a4a,stroke-width:2px,color:#5a9a4a
+    style L4 fill:none,stroke:#8a63a8,stroke-width:2px,color:#8a63a8
+    style L5 fill:none,stroke:#8c959f,stroke-width:2px,color:#8c959f
 ```
 
 Mermaid source: [`diagrams/alerting-architecture.mmd`](diagrams/alerting-architecture.mmd) · Layer-by-layer walkthrough: [`docs/architecture.md`](docs/architecture.md)
