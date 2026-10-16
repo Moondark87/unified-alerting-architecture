@@ -28,45 +28,53 @@ A layered pipeline that decouples *where alerts come from* from *how they are de
 ## Architecture
 
 ```mermaid
-graph TD
-    subgraph L1 [Monitoring & Alerting Layer]
-        A[<b>Monitoring Sources</b><br/>ITIM / NMS, SIEM, Endpoint Mgmt<br/>Thresholds & Outage Checks<br/>Webhook Event Triggers]
+flowchart TB
+    %% Layer 1: Monitoring
+    subgraph L1 ["1 · Monitoring & Alerting"]
+        A["<b>Monitoring Sources</b><br/>ITIM / NMS · SIEM · Endpoint Mgmt<br/>Thresholds, outage checks, webhook triggers"]
     end
 
-    subgraph L2 [Communication & Routing Layer]
-        B1[<b>Self-Hosted Chat Server</b><br/>Alert Ingestion Channel<br/>Pattern-Matched Routing<br/>Location / Severity Logic]
-        B2[<b>Message Bus</b><br/>Human-Readable Audit Trail<br/>Internal Collaboration]
+    %% Layer 2: Communication & Routing
+    subgraph L2 ["2 · Communication & Routing"]
+        B1["<b>Self-Hosted Chat Server</b><br/>Ingestion channel<br/>Pattern-matched site / severity routing"]
+        B2["<b>Message Bus</b><br/>Human-readable audit trail<br/>Internal collaboration"]
         B1 <--> B2
     end
 
-    subgraph L3 [Notification Delivery Layer]
-        C[<b>Text / SMS Delivery Service</b><br/>API-Driven Messaging<br/>Location-Based Groups<br/>Company-Wide Alerts<br/>Delivery Logging]
+    %% Layer 3: Delivery
+    subgraph L3 ["3 · Notification Delivery"]
+        C["<b>SMS Delivery Service (API)</b><br/>Location-based groups · Company-wide broadcast<br/>Per-message delivery logging"]
     end
 
-    subgraph L4 [Recipient Layer]
-        D[<b>On-Call Teams / NOC / SOC</b><br/>Engineering<br/>Executive Notifications]
+    %% Layer 4: Recipients
+    subgraph L4 ["4 · Recipients"]
+        D["<b>On-Call Teams · NOC / SOC</b><br/>Engineering · Executive notifications"]
     end
 
-    subgraph L5 [Logging & Intelligence Layer]
-        E[(<b>SIEM / Log Platform</b><br/>Ingests Monitoring Events<br/>Ingests Chat Messages<br/>Ingests SMS Delivery Logs<br/>Correlation & Retention)]
+    %% Layer 5: Logging
+    subgraph L5 ["5 · Logging & Intelligence"]
+        E[("<b>SIEM / Log Platform</b><br/>Events, chat messages, delivery logs<br/>Correlation & retention")]
     end
 
+    %% Main flow
     A -- Webhook --> B1
-    B1 -- Routed Alert --> C
+    B1 -- Routed alert --> C
     C -- SMS --> D
-    B1 -- Chat Notification --> D
+    B1 -- Chat notification --> D
 
-    A -- Alert Logs --> E
-    B1 -- Routing Decisions --> E
-    C -- Delivery Logs --> E
-    D -- Acknowledgements --> E
-    E -. Correlated Alerts .-> B1
+    %% Logging
+    A -. Alert logs .-> E
+    B1 -. Routing decisions .-> E
+    C -. Delivery logs .-> E
+    D -. Acknowledgements .-> E
+    E -- Correlated alerts --> B1
 
-    style L1 fill:#dae8fc,stroke:#6c8ebf
-    style L2 fill:#ffe6cc,stroke:#d79b00
-    style L3 fill:#d5e8d4,stroke:#82b366
-    style L4 fill:#e1d5e7,stroke:#9673a6
-    style L5 fill:#f5f5f5,stroke:#666666
+    %% Styling: outline-only so titles stay readable in light and dark themes
+    style L1 fill:none,stroke:#6c8ebf,stroke-width:2px
+    style L2 fill:none,stroke:#d79b00,stroke-width:2px
+    style L3 fill:none,stroke:#82b366,stroke-width:2px
+    style L4 fill:none,stroke:#9673a6,stroke-width:2px
+    style L5 fill:none,stroke:#888888,stroke-width:2px
 ```
 
 Mermaid source: [`diagrams/alerting-architecture.mmd`](diagrams/alerting-architecture.mmd) · Layer-by-layer walkthrough: [`docs/architecture.md`](docs/architecture.md)
