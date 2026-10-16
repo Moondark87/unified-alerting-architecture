@@ -1,0 +1,12 @@
+{
+  "source": "endpoint_mgmt_platform",
+  "event_type": "agent_health",
+  "severity": "MEDIUM",
+  "site": "SITE-B",
+  "routing_decision": {
+    "to_group": "SITE-B-ONCALL",
+    "delivery_channel": "chat",
+    "reason": "Medium severity; chat-only notification"
+  },
+  "raw_message": "[ALERT] [SITE=SITE-B] [SEV=MEDIUM] Endpoint agent has not checked in for 45 minutes"
+}

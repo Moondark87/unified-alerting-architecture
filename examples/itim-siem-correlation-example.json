@@ -1,0 +1,24 @@
+{
+  "correlation_id": "corr-88219",
+  "primary_alert": {
+    "source": "itim",
+    "alert_id": "itim-441122",
+    "severity": "HIGH",
+    "site": "HQ",
+    "message": "API latency above threshold"
+  },
+  "related_logs": [
+    {
+      "source": "siem",
+      "log_type": "application_error",
+      "message": "Timeouts detected in API gateway"
+    },
+    {
+      "source": "siem",
+      "log_type": "network_event",
+      "message": "Increased packet loss on WAN link"
+    }
+  ],
+  "correlated_severity": "CRITICAL",
+  "generated_at": "2026-01-14T04:02:11Z"
+}

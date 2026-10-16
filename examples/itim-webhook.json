@@ -1,0 +1,12 @@
+{
+  "source": "itim",
+  "event_type": "service_alert",
+  "host": "db01.site-a.internal",
+  "service": "Database Connectivity",
+  "state": "CRITICAL",
+  "timestamp": "2026-01-14T03:22:11Z",
+  "message": "Database unreachable for 3 consecutive checks",
+  "site": "SITE-A",
+  "severity": "CRITICAL",
+  "alert_id": "itim-784512"
+}

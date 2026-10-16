@@ -1,0 +1,15 @@
+{
+  "log_type": "alert_delivery",
+  "alert_id": "itim-784512",
+  "source": "itim",
+  "site": "SITE-A",
+  "severity": "CRITICAL",
+  "delivery": {
+    "channel": "sms",
+    "group": "SITE-A-ONCALL",
+    "status": "FAILED",
+    "error_code": "CARRIER_UNAVAILABLE",
+    "timestamp": "2026-01-14T03:22:14Z"
+  },
+  "raw_message": "[ALERT] [SITE=SITE-A] [SEV=CRITICAL] Database unreachable for 3 checks"
+}

@@ -1,0 +1,12 @@
+{
+  "broadcast_type": "company_wide",
+  "severity": "CRITICAL",
+  "site": "ALL",
+  "timestamp": "2026-01-14T03:30:55Z",
+  "message": "CRITICAL: Major outage impacting multiple locations. Investigation underway.",
+  "metadata": {
+    "source": "itim",
+    "alert_id": "itim-991244",
+    "initiated_by": "automated_outage_detector"
+  }
+}

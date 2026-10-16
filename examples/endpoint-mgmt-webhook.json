@@ -1,0 +1,12 @@
+{
+  "source": "endpoint_mgmt_platform",
+  "event_type": "agent_health",
+  "device_id": "laptop-4421",
+  "user": "jdoe",
+  "state": "WARNING",
+  "timestamp": "2026-01-14T03:25:44Z",
+  "message": "Endpoint agent has not checked in for 45 minutes",
+  "site": "SITE-B",
+  "severity": "MEDIUM",
+  "alert_id": "emp-992144"
+}

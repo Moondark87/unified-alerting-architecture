@@ -1,0 +1,23 @@
+{
+  "correlation_id": "corr-55221",
+  "events": [
+    {
+      "source": "itim",
+      "alert_id": "itim-784512",
+      "severity": "CRITICAL",
+      "timestamp": "2026-01-14T03:22:11Z",
+      "message": "Database unreachable for 3 consecutive checks"
+    },
+    {
+      "source": "endpoint_mgmt_platform",
+      "alert_id": "emp-992144",
+      "severity": "MEDIUM",
+      "timestamp": "2026-01-14T03:25:44Z",
+      "message": "Multiple endpoints reporting application failures"
+    }
+  ],
+  "correlated_reason": "Multiple systems reporting failures in the same service group",
+  "site": "SITE-A",
+  "final_severity": "CRITICAL",
+  "generated_at": "2026-01-14T03:26:02Z"
+}

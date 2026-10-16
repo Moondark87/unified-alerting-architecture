@@ -1,0 +1,47 @@
+graph TD
+    %% Layer 1: Monitoring
+    subgraph L1 [Monitoring & Alerting Layer]
+        A[<b>Monitoring Sources</b><br/>ITIM / NMS, SIEM, Endpoint Mgmt<br/>Thresholds & Outage Checks<br/>Webhook Event Triggers]
+    end
+
+    %% Layer 2: Communication
+    subgraph L2 [Communication & Routing Layer]
+        B1[<b>Self-Hosted Chat Server</b><br/>Alert Ingestion Channel<br/>Pattern-Matched Routing<br/>Location / Severity Logic]
+        B2[<b>Message Bus</b><br/>Human-Readable Audit Trail<br/>Internal Collaboration]
+        B1 <--> B2
+    end
+
+    %% Layer 3: Delivery
+    subgraph L3 [Notification Delivery Layer]
+        C[<b>Text / SMS Delivery Service</b><br/>API-Driven Messaging<br/>Location-Based Groups<br/>Company-Wide Alerts<br/>Delivery Logging]
+    end
+
+    %% Layer 4: Recipients
+    subgraph L4 [Recipient Layer]
+        D[<b>On-Call Teams / NOC / SOC</b><br/>Engineering<br/>Executive Notifications]
+    end
+
+    %% Layer 5: Logging
+    subgraph L5 [Logging & Intelligence Layer]
+        E[(<b>SIEM / Log Platform</b><br/>Ingests Monitoring Events<br/>Ingests Chat Messages<br/>Ingests SMS Delivery Logs<br/>Correlation & Retention)]
+    end
+
+    %% Main Flow Connections
+    A -- Webhook --> B1
+    B1 -- Routed Alert --> C
+    C -- SMS --> D
+    B1 -- Chat Notification --> D
+
+    %% Logging Connections
+    A -- Alert Logs --> E
+    B1 -- Routing Decisions --> E
+    C -- Delivery Logs --> E
+    D -- Acknowledgements --> E
+    E -. Correlated Alerts .-> B1
+
+    %% Styling
+    style L1 fill:#dae8fc,stroke:#6c8ebf
+    style L2 fill:#ffe6cc,stroke:#d79b00
+    style L3 fill:#d5e8d4,stroke:#82b366
+    style L4 fill:#e1d5e7,stroke:#9673a6
+    style L5 fill:#f5f5f5,stroke:#666666

@@ -1,0 +1,12 @@
+{
+  "to_group": "SITE-A-ONCALL",
+  "severity": "CRITICAL",
+  "site": "SITE-A",
+  "timestamp": "2026-01-14T03:22:12Z",
+  "message": "CRITICAL: Database unreachable for 3 checks",
+  "metadata": {
+    "alert_id": "itim-784512",
+    "source": "itim",
+    "delivery_channel": "sms"
+  }
+}
